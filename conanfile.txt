@@ -1,5 +1,6 @@
 [requires]
-zmq/4.2.2@bincrafters/stable
+zmq/4.3.2@bincrafters/stable
+cppzmq/4.3.0@bincrafters/stable
 protobuf/3.9.1@bincrafters/stable
 
 [generators]

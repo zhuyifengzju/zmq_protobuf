@@ -16,8 +16,10 @@ set(PROTO_FILES
 add_proto_cc_library(shared_protobuf
   PROTO_FILES ${PROTO_FILES}
   PROTO_LIB CONAN_PKG::protobuf)
+
+message("${CONAN_LIBS}")
 add_executable(formation_server src/formation_server.cc)
-target_link_libraries(formation_server shared_protobuf)
+target_link_libraries(formation_server shared_protobuf CONAN_PKG::zmq CONAN_PKG::cppzmq)
 
 
 install(TARGETS formation_server
