@@ -1,0 +1,6 @@
+[requires]
+zmq/4.2.2@bincrafters/stable
+protobuf/3.9.1@bincrafters/stable
+
+[generators]
+cmake
