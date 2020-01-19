@@ -12,16 +12,24 @@ conan_basic_setup(TARGETS)
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/protobuf.cmake)
 
 set(PROTO_FILES
-  proto/formation.proto)
+  proto/formation.proto
+  proto/img.proto)
 add_proto_cc_library(shared_protobuf
   PROTO_FILES ${PROTO_FILES}
   PROTO_LIB CONAN_PKG::protobuf)
 
 message("${CONAN_LIBS}")
-add_executable(formation_server src/formation_server.cc)
-target_link_libraries(formation_server shared_protobuf CONAN_PKG::zmq CONAN_PKG::cppzmq)
 
+# add_executable(formation_server src/formation_server.cc)
+# target_link_libraries(formation_server shared_protobuf CONAN_PKG::zmq CONAN_PKG::cppzmq)
 
-install(TARGETS formation_server
+add_executable(example_pub src/example_pub.cc)
+target_link_libraries(example_pub shared_protobuf CONAN_PKG::zmq CONAN_PKG::cppzmq)
+
+add_executable(example_sub src/example_sub.cc)
+target_link_libraries(example_sub shared_protobuf CONAN_PKG::zmq CONAN_PKG::cppzmq)
+
+install(TARGETS example_pub
+  example_sub
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib)

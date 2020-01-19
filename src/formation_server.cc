@@ -13,8 +13,6 @@ int main(){
   zmq::context_t context(1);
   zmq::socket_t socket(context, ZMQ_PAIR);
 
-  
-  
   int num = 5;
   std::vector<double> pos_x, pos_y;
   for (int i=0; i< 5; i++){
@@ -33,6 +31,7 @@ int main(){
   memcpy((void*)request.data(), msg_str.c_str(), msg_str.size());
 
   socket.send(request);
+  std::cout << "Sent" << std::endl;
   google::protobuf::ShutdownProtobufLibrary();
   return 0;
 }
